@@ -1,4 +1,5 @@
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
+
 
 def get_birthdays_per_week(users):
     birthdays_per_week = {}
@@ -9,13 +10,17 @@ def get_birthdays_per_week(users):
         
         # Создаем новую дату с текущим годом и месяцем/днем из дня рождения
         today = datetime.today().date()
-
+        
         if today > datetime(today.year, birthday.month, birthday.day).date():
             # Если дата рождения уже прошла, меняем год на следующий
-            changed_year = datetime(today.year + 1, birthday.month, birthday.day).date()
+            changed_year = datetime(
+                today.year + 1, birthday.month, birthday.day
+                ).date()
         else:
             # Иначе оставляем текущий год
-            changed_year = datetime(today.year, birthday.month, birthday.day).date()
+            changed_year = datetime(
+                today.year, birthday.month, birthday.day
+                ).date()
 
         # Переносим на понедельник, если выходной - суббота или воскресенье
         if changed_year.weekday() == 5:  # 5 - суббота
