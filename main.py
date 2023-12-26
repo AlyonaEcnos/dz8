@@ -7,10 +7,8 @@ def get_birthdays_per_week(users):
     for user in users:
         name = user["name"]
         birthday = user["birthday"]
-        
         # Создаем новую дату с текущим годом и месяцем/днем из дня рождения
         today = datetime.today().date()
-        
         if today > datetime(today.year, birthday.month, birthday.day).date():
             # Если дата рождения уже прошла, меняем год на следующий
             changed_year = datetime(
